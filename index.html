@@ -1,4 +1,4 @@
-TYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -30,70 +30,35 @@ TYPE html>
             background-color: #fff;
         }
 
-        /* --- NAVIGATION (FIXED & SPACED) --- */
-        /* 1. RESET FIXED WIDTHS */
-img, video {
-    max-width: 100%;
-    height: auto;
-}
+        /* --- NAVIGATION --- */
+        .navbar {
+            width: 100%;
+            background: #fff;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
 
-/* 2. THE MOBILE MENU TOGGLE (Hamburger) */
-.menu-toggle {
-    display: none; /* Hidden on Desktop */
-    flex-direction: column;
-    cursor: pointer;
-    gap: 5px;
-}
+        .nav-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
 
-.menu-toggle span {
-    width: 25px;
-    height: 3px;
-    background: var(--dark);
-    transition: 0.3s;
-}
+        /* FIXED LOGO SIZE */
+        .logo img {
+            height: 80px;  /* Changed from 1000px to 80px */
+            width: auto;
+            display: block;
+        }
 
-/* 3. RESPONSIVE MEDIA QUERY */
-@media (max-width: 768px) {
-    .menu-toggle {
-        display: flex; /* Shows on Mobile */
-    }
-
-    .nav-links {
-        display: none; /* Hide menu by default on mobile */
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background: white;
-        flex-direction: column;
-        padding: 20px;
-        box-shadow: 0 5px 10px rgba(0,0,0,0.1);
-    }
-
-    .nav-links.active {
-        display: flex; /* Show menu when toggled */
-    }
-
-    /* Stack Sections */
-    .service-grid, .metrics-grid {
-        grid-template-columns: 1fr !important;
-    }
-
-    .hero-content h1 {
-        font-size: 32px !important;
-    }
-}
-.logo img {
-    height: 1000px;  /* Adjust this number to make it smaller or larger */
-    width: auto;   /* Keeps the proportions perfect */
-    display: block;
-    transition: 0.3s ease; /* Adds a smooth transition if you resize the window */
-}
-
-        /* INCREASED GAP BETWEEN BUTTONS HERE */
         .nav-links {
             display: flex;
-            gap: 60px; /* Increased space between navigation items */
+            gap: 40px;
             align-items: center;
         }
 
@@ -102,32 +67,38 @@ img, video {
             font-weight: 700;
             font-size: 15px;
             transition: 0.3s ease;
-            letter-spacing: 0.5px;
+            position: relative;
         }
 
         .nav-item:hover {
             color: var(--brand-orange);
         }
 
-        /* Dropdown Styling */
+        /* Dropdown Styling - Arrows Removed */
         .dropdown { position: relative; }
+        
+        /* This ensures no pseudo-elements (like arrows) are added */
+        .dropdown > .nav-item::after {
+            display: none !important;
+            content: none !important;
+        }
+
         .dropdown-content {
             display: none;
             position: absolute;
             background: white;
-            min-width: 220px;
+            min-width: 200px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.1);
             border-radius: 8px;
             top: 100%;
+            left: 0;
             border-top: 3px solid var(--brand-orange);
             padding: 10px 0;
-            animation: fadeIn 0.3s ease;
+            z-index: 1001;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+
         .dropdown:hover .dropdown-content { display: block; }
+        
         .dropdown-content a {
             padding: 12px 20px;
             display: block;
@@ -135,159 +106,34 @@ img, video {
             font-size: 14px;
             font-weight: 600;
         }
+
         .dropdown-content a:hover { background: #fff7ed; color: var(--brand-orange); }
 
-        /* --- TICKER OFFSET --- */
-        .ap-ticker-container {
-            margin-top: 89px; /* Offsets the fixed navbar height */
-            background: linear-gradient(90deg, #1a3a5f 0%, #4b0082 50%, #b8860b 100%);
-            color: #fff;
-            padding: 12px 0;
-            overflow: hidden;
-        }
-        .ap-ticker-content {
-            display: inline-block;
-            white-space: nowrap;
-            animation: ap-scroll 35s linear infinite;
-        }
-        .ap-ticker-content span {
-            padding: 0 50px;
-            font-weight: 600;
-            font-size: 13px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        @keyframes ap-scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        /* --- HERO VIDEO SECTION --- */
-        .hero {
-            position: relative;
-            width: 100%;
-            height: 85vh;
-            overflow: hidden;
-            background: #000;
-        }
-
-        .hero-video {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            min-width: 100%;
-            min-height: 100%;
-            width: auto;
-            height: auto;
-            transform: translate(-50%, -50%);
-            object-fit: cover;
-        }
-
-        .hero-overlay {
-            position: absolute;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.45);
-            z-index: 1;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 2;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: #fff;
-        }
-
-        .hero-content h1 {
-            font-size: 65px;
-            letter-spacing: 4px;
-            color: #f0f0f0;
-            text-shadow: 2px 4px 15px rgba(0,0,0,0.6);
-            font-weight: 800;
-        }
-
-        .hero-subtitle {
-            background: #fff;
-            color: var(--navy-dark);
-            padding: 25px;
-            text-align: center;
-            font-weight: 700;
-            font-size: 18px;
-            border-bottom: 2px solid #eee;
-        }
-
-        /* --- CTA BUTTON --- */
         .enquiry-cta-btn {
             background: var(--brand-orange);
             color: white;
-            padding: 14px 28px;
+            padding: 12px 24px;
             border-radius: 8px;
             font-weight: 800;
             border: none;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(245, 124, 32, 0.3);
-            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        .enquiry-cta-btn:hover { 
-            background: #e06b12; 
-            transform: scale(1.05); 
-            box-shadow: 0 6px 20px rgba(245, 124, 32, 0.4);
+            transition: 0.3s;
         }
 
-        /* --- MODAL --- */
-        .enquiry-modal {
-            display: none;
-            position: fixed;
-            z-index: 9999;
-            inset: 0;
-            background: rgba(0,0,0,0.85);
-            align-items: center;
-            justify-content: center;
-            backdrop-filter: blur(5px);
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .logo img { height: 60px; }
         }
-        .enquiry-modal-content {
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            width: 90%;
-            max-width: 450px;
-            position: relative;
-        }
-        .enquiry-form input, .enquiry-form select, .enquiry-form textarea {
-            width: 100%;
-            padding: 14px;
-            margin: 12px 0;
-            border: 1px solid #e2e8f0;
-            border-radius: 8px;
-            font-family: inherit;
-        }
-        .enquiry-submit-btn {
-            background: #25D366;
-            color: white;
-            width: 100%;
-            padding: 16px;
-            border: none;
-            border-radius: 8px;
-            font-weight: bold;
-            font-size: 16px;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-
-        
     </style>
 </head>
 <body>
 
     <nav class="navbar">
         <div class="nav-wrapper">
-           <div class="logo">
-    <img src="rlogo.png" alt="Anvesh Properties" style="height: 90px; width: auto;">
-</div>
+            <div class="logo">
+                <img src="rlogo.png" alt="Anvesh Properties">
+            </div>
 
             <div class="nav-links">
                 <a href="#home" class="nav-item">HOME</a>
@@ -318,9 +164,12 @@ img, video {
                 <a href="#contact" class="nav-item">CONTACT US</a>
             </div>
 
-            <button class="enquiry-cta-btn" onclick="toggleModal(true)">ENQUIRY NOW</button>
+            <button class="enquiry-cta-btn">ENQUIRY NOW</button>
         </div>
     </nav>
+
+</body>
+</html>
 
     <div class="ap-ticker-container">
         <div class="ap-ticker-content">
