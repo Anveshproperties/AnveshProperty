@@ -1408,6 +1408,170 @@ We take every career and every property journey seriously, following a well-defi
         }
     </style>
 </head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a365d; /* Elegant Deep Blue */
+            --accent: #d4af37;  /* Premium Gold */
+            --text-dark: #2d3748;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f7fafc;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        /* Section Title */
+        .section-title h2 {
+            color: var(--primary);
+            font-size: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 40px;
+            border-left: 4px solid var(--accent);
+            padding-left: 15px;
+        }
+
+        /* Main Banner Grid */
+        .loan-banner {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 40px;
+            background: var(--white);
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            align-items: center;
+        }
+
+        .loan-content {
+            padding: 60px;
+        }
+
+        .loan-content h2 {
+            font-size: 3rem;
+            color: var(--primary);
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .loan-content p {
+            color: #4a5568;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+        }
+
+        /* Benefits Grid */
+        .loan-benefits {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+        .loan-benefits li {
+            display: flex;
+            align-items: center;
+            font-size: 0.95rem;
+            color: var(--text-dark);
+            font-weight: 500;
+        }
+
+        .loan-benefits li::before {
+            content: "✓";
+            background: #e6fffa;
+            color: #38b2ac;
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin-right: 12px;
+            font-weight: bold;
+        }
+
+        /* CTA Button */
+        .loan-btn {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 18px 35px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.2s, background 0.2s;
+            box-shadow: 0 10px 15px -3px rgba(26, 54, 93, 0.3);
+        }
+
+        .loan-btn:hover {
+            background: #2a4365;
+            transform: translateY(-2px);
+        }
+
+        /* Visual Side */
+        .loan-visual {
+            background: linear-gradient(135deg, var(--primary) 0%, #2c5282 100%);
+            height: 100%;
+            min-height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        /* Interest Card (Glassmorphism) */
+        .interest-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 40px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+            color: white;
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+        }
+
+        .interest-card h3 {
+            font-weight: 300;
+            font-size: 1rem;
+            margin: 0;
+            opacity: 0.9;
+        }
+
+        .interest-card .rate {
+            display: block;
+            font-size: 4.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin: 10px 0;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .loan-banner { grid-template-columns: 1fr; }
+            .loan-visual { min-height: 300px; }
+            .loan-content { padding: 40px; }
+            .loan-content h2 { font-size: 2.2rem; }
+        }
+    </style>
+</head>
 <body>
 
 <div class="container">
@@ -1417,30 +1581,31 @@ We take every career and every property journey seriously, following a well-defi
 
     <div class="loan-banner">
         <div class="loan-content">
-            <h2>Your Dream Home,<br>Simplified.</h2>
-            <p>Get the most competitive rates in Pune with Anvesh Properties. We partner with top banks to ensure your home buying journey is smooth and stress-free.</p>
+            <h2>Your Dream Home,<br><span style="color: var(--accent)">Simplified.</span></h2>
+            <p>We partner with Pune's leading financial institutions to bring you custom home loan solutions with speed and transparency.</p>
             
             <ul class="loan-benefits">
-                <li>Instant Eligibility Check</li>
-                <li>Zero Hidden Charges</li>
-                <li>Minimum Paperwork Required</li>
-                <li>Approval within 48 Hours</li>
+                <li>Instant Eligibility</li>
+                <li>Zero Hidden Fees</li>
+                <li>Paperless Process</li>
+                <li>48hr Approvals</li>
             </ul>
 
-            <a href="tel:+918001900148" class="loan-btn">Get Free Consultation</a>
+            <a href="tel:+918001900148" class="loan-btn">Start Free Consultation</a>
         </div>
 
         <div class="loan-visual">
             <div class="interest-card">
                 <h3>Interest Starting From</h3>
                 <span class="rate">8.4%</span>
-                <span>Fixed Yearly Rate*</span>
+                <p style="margin: 0; font-size: 0.8rem; opacity: 0.7;">*T&C Apply | Fixed Yearly Rate</p>
             </div>
         </div>
     </div>
 </div>
 
 </body>
+</html>
 </html>
 <head>
 <style>
@@ -3212,6 +3377,7 @@ We take every career and every property journey seriously, following a well-defi
 </footer>
 </body>
 </html>
+
 
 
 
