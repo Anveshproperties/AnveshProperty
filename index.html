@@ -26,7 +26,7 @@
             overflow-x: hidden; 
         }
 
-        /* --- MODERN PREMIUM NAVBAR --- */
+        /* --- NAVBAR --- */
         .navbar {
             position: fixed;
             top: 0; 
@@ -36,7 +36,7 @@
             display: flex;
             align-items: center;
             background: var(--navbar-dark);
-            backdrop-filter: blur(10px); /* Glass effect */
+            backdrop-filter: blur(10px);
             border-bottom: 4px solid var(--brand-orange);
             box-shadow: 0 10px 40px rgba(0,0,0,0.4);
         }
@@ -45,34 +45,17 @@
             width: 1200px;
             margin: 0 auto;
             display: grid;
-            grid-template-columns: 280px 1fr 280px; /* Logo | Centered Content | Balance Space */
+            grid-template-columns: 280px 1fr 280px;
             align-items: center;
             padding: 0 30px;
         }
 
-        .logo img { 
-            height: 65px; 
-            width: auto; 
-            filter: drop-shadow(0 0 5px rgba(255,255,255,0.2));
-            transition: transform 0.3s ease;
-        }
+        .logo img { height: 65px; transition: transform 0.3s ease; }
         .logo img:hover { transform: scale(1.05); }
 
-        /* --- CENTERED NAV GROUP --- */
-        .nav-center-group {
-            display: flex;
-            align-items: center;
-            gap: 40px; 
-            justify-content: center;
-        }
+        .nav-center-group { display: flex; align-items: center; gap: 40px; justify-content: center; }
+        .nav-links { display: flex; gap: 30px; align-items: center; }
 
-        .nav-links {
-            display: flex;
-            gap: 30px;
-            align-items: center;
-        }
-
-        /* --- ANIMATED NAV ITEMS --- */
         .nav-item {
             color: var(--text-white); 
             font-weight: 600;
@@ -81,25 +64,18 @@
             text-transform: uppercase;
             position: relative;
             padding: 5px 0;
-            transition: 0.3s ease;
         }
 
-        /* The animated underline effect */
         .nav-item::after {
             content: '';
             position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 0;
-            height: 2px;
+            bottom: -2px; left: 0; width: 0; height: 2px;
             background: var(--brand-orange);
             transition: width 0.3s ease;
         }
-
         .nav-item:hover { color: var(--brand-orange); }
         .nav-item:hover::after { width: 100%; }
 
-        /* Dropdown Styling */
         .dropdown { position: relative; }
         .dropdown-content {
             display: none;
@@ -111,22 +87,10 @@
             top: 130%;
             padding: 15px 0;
             border-top: 5px solid var(--brand-orange);
-            animation: slideUp 0.3s ease forwards;
         }
-        @keyframes slideUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-        
         .dropdown:hover .dropdown-content { display: block; }
-        .dropdown-content a {
-            padding: 12px 25px;
-            display: block;
-            color: #0f172a !important;
-            font-size: 13px;
-            font-weight: 700;
-            transition: 0.2s;
-        }
-        .dropdown-content a:hover { background: #f8f9fa; color: var(--brand-orange) !important; padding-left: 30px; }
+        .dropdown-content a { padding: 12px 25px; display: block; color: #0f172a !important; font-weight: 700; }
 
-        /* --- GLOWING ENQUIRY BUTTON --- */
         .enquiry-cta-btn {
             background: var(--brand-gradient);
             color: white;
@@ -137,17 +101,6 @@
             cursor: pointer;
             font-size: 12px;
             text-transform: uppercase;
-            box-shadow: 0 0 20px rgba(245, 124, 32, 0.5);
-            transition: all 0.4s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .enquiry-cta-btn:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 10px 25px rgba(245, 124, 32, 0.7);
-            background: white;
-            color: var(--brand-orange);
         }
 
         /* --- TICKER --- */
@@ -157,27 +110,62 @@
             background: #1e1b4b;
             color: #fff;
             padding: 14px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
+            overflow: hidden;
         }
-        .ap-ticker-content span { padding: 0 40px; font-weight: 600; font-size: 13px; text-transform: uppercase; color: #cbd5e1; }
-        .ap-ticker-content span i { color: var(--brand-orange); margin-right: 8px; }
+        @keyframes ap-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
 
-        /* --- HERO --- */
+        /* --- HERO SECTION (FIXED VISIBILITY) --- */
         .hero {
             position: relative;
-            width: 100%; height: 75vh;
-            overflow: hidden; 
+            width: 100%; 
+            height: 75vh;
+            display: flex; /* Centers content */
+            align-items: center;
+            justify-content: center;
+            background: #000; /* Fallback background */
         }
+
         .hero-video {
-            position: absolute; top: 50%; left: 50%;
-            transform: translate(-50%, -50%);
-            min-width: 100%; min-height: 100%;
-            object-fit: cover; opacity: 0.75;
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            object-fit: cover;
+            opacity: 0.6; /* Reduced opacity to make white text stand out */
+            z-index: 1;
         }
+
+        /* The Overlay makes text readable regardless of video brightness */
+        .hero-overlay {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.2); 
+            z-index: 2;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10; /* Ensures text is above video and overlay */
+            text-align: center;
+            width: 100%;
+            padding: 0 20px;
+        }
+
         .hero-content h1 {
-            font-size: 75px;
-            color: #fff; font-weight: 900; letter-spacing: 12px; text-align: center;
-            text-shadow: 0 10px 30px rgba(0,0,0,0.8);
+            font-size: 85px;
+            color: #ffffff; 
+            font-weight: 900; 
+            letter-spacing: 15px; 
+            text-transform: uppercase;
+            margin: 0;
+            /* Strong shadow helps visibility on moving images */
+            text-shadow: 0 4px 20px rgba(0,0,0,0.8), 0 0 40px rgba(0,0,0,0.4);
+            animation: fadeInDown 1.5s ease;
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .hero-subtitle {
@@ -186,13 +174,13 @@
             padding: 25px; text-align: center; font-weight: 700;
             border-bottom: 2px solid #eee; font-size: 20px;
             letter-spacing: 2px;
+            position: relative;
+            z-index: 10;
         }
 
         /* --- MODAL --- */
-        .enquiry-modal-content {
-            background: white; padding: 50px; border-radius: 30px; width: 450px;
-            box-shadow: 0 25px 50px rgba(0,0,0,0.5);
-        }
+        .enquiry-modal { display: none; position: fixed; z-index: 9999; inset: 0; background: rgba(0,0,0,0.9); align-items: center; justify-content: center; }
+        .enquiry-modal-content { background: white; padding: 50px; border-radius: 30px; width: 450px; }
     </style>
 </head>
 <body>
@@ -206,38 +194,24 @@
             <div class="nav-center-group">
                 <div class="nav-links">
                     <a href="#home" class="nav-item">Home</a>
-                    
                     <div class="dropdown">
-                        <a href="#about" class="nav-item">About <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 3px;"></i></a>
+                        <a href="#about" class="nav-item">About <i class="fas fa-chevron-down" style="font-size: 10px;"></i></a>
                         <div class="dropdown-content">
-                            <a href="#about"><i class="fas fa-info-circle"></i> Who We Are</a>
-                            <a href="#team"><i class="fas fa-users"></i> Our Team</a>
+                            <a href="#about">Who We Are</a>
+                            <a href="#team">Our Team</a>
                         </div>
                     </div>
-
                     <div class="dropdown">
-                        <a href="#services" class="nav-item">Services <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 3px;"></i></a>
+                        <a href="#services" class="nav-item">Services <i class="fas fa-chevron-down" style="font-size: 10px;"></i></a>
                         <div class="dropdown-content">
-                            <a href="#Home_Loan"><i class="fas fa-home"></i> Home Loans</a>
-                            <a href="#P_loan"><i class="fas fa-hand-holding-usd"></i> Personal Loans</a>
+                            <a href="#Home_Loan">Home Loans</a>
+                            <a href="#P_loan">Personal Loans</a>
                         </div>
                     </div>
-
-                    <div class="dropdown">
-                        <a href="#projects" class="nav-item">Projects <i class="fas fa-chevron-down" style="font-size: 10px; margin-left: 3px;"></i></a>
-                        <div class="dropdown-content">
-                            <a href="projects.html" style="background: var(--brand-orange); color: white !important; border-radius: 8px; margin: 0 10px; text-align: center;">Explore All</a>
-                        </div>
-                    </div>
-
                     <a href="#contact" class="nav-item">Contact</a>
                 </div>
-
-                <button class="enquiry-cta-btn" onclick="toggleModal(true)">
-                    Enquiry Now
-                </button>
+                <button class="enquiry-cta-btn" onclick="toggleModal(true)">Enquiry Now</button>
             </div>
-            
             <div></div>
         </div>
     </nav>
@@ -253,11 +227,12 @@
     </div>
 
     <header class="hero">
+        <div class="hero-overlay"></div>
         <video autoplay muted loop playsinline class="hero-video">
             <source src="https://media.istockphoto.com/id/1479313083/video/4k-aerial-view-real-time-footage-of-above-captain-cook-bridge-pacific-and-riverside.mp4?s=mp4-640x640-is&k=20&c=1fagShgRX86WyOXiuZY9SKLYrmQJM2eK64JJgrw_CQE=" type="video/mp4">
         </video>
         <div class="hero-content">
-            <h1 style="animation: fadeIn 1.5s ease;">ANVESH PROPERTIES</h1>
+            <h1>ANVESH PROPERTIES</h1>
         </div>
     </header>
 
@@ -265,23 +240,23 @@
         BUILDERS | CONSTRUCTION | PLOTTING | FINANCE
     </div>
 
-    <div id="enquiryModal" class="enquiry-modal" style="display: none; position: fixed; z-index: 9999; inset: 0; background: rgba(0,0,0,0.9); align-items: center; justify-content: center;">
+    <div id="enquiryModal" class="enquiry-modal">
         <div class="enquiry-modal-content">
-            <h2 style="color: var(--brand-orange); margin-bottom: 25px; font-weight: 800; text-align: center; font-size: 28px;">Request a Callback</h2>
-            <form id="waForm" class="enquiry-form">
-                <input type="text" id="name" placeholder="Full Name" required style="width: 100%; padding: 15px; margin-bottom: 15px; border: 1px solid #eee; border-radius: 10px;">
-                <input type="tel" id="phone" placeholder="Mobile Number" required style="width: 100%; padding: 15px; margin-bottom: 15px; border: 1px solid #eee; border-radius: 10px;">
-                <select id="service" style="width: 100%; padding: 15px; margin-bottom: 15px; border: 1px solid #eee; border-radius: 10px;">
+            <h2 style="color: var(--brand-orange); margin-bottom: 25px; text-align: center;">Request a Callback</h2>
+            <form id="waForm">
+                <input type="text" id="name" placeholder="Full Name" required style="width: 100%; padding: 15px; margin-bottom: 15px; border-radius: 10px; border: 1px solid #ddd;">
+                <input type="tel" id="phone" placeholder="Mobile Number" required style="width: 100%; padding: 15px; margin-bottom: 15px; border-radius: 10px; border: 1px solid #ddd;">
+                <select id="service" style="width: 100%; padding: 15px; margin-bottom: 15px; border-radius: 10px;">
                     <option value="Home Loan">Home Loan</option>
                     <option value="Plots">Buying Plots</option>
                     <option value="Residential">Residential Flats</option>
                 </select>
-                <textarea id="msg" rows="3" placeholder="How can we help you?" style="width: 100%; padding: 15px; margin-bottom: 15px; border: 1px solid #eee; border-radius: 10px;"></textarea>
-                <button type="submit" style="background:#25D366; color:white; width:100%; padding:18px; border:none; border-radius:12px; font-weight:bold; cursor:pointer; font-size: 16px;">
+                <textarea id="msg" rows="3" placeholder="How can we help you?" style="width: 100%; padding: 15px; margin-bottom: 15px; border-radius: 10px; border: 1px solid #ddd;"></textarea>
+                <button type="submit" style="background:#25D366; color:white; width:100%; padding:18px; border:none; border-radius:12px; font-weight:bold; cursor:pointer;">
                     <i class="fab fa-whatsapp"></i> SEND VIA WHATSAPP
                 </button>
             </form>
-            <button onclick="toggleModal(false)" style="margin-top: 20px; background: none; border: none; color: #999; cursor: pointer; width: 100%; font-weight: 600;">DISMISS</button>
+            <button onclick="toggleModal(false)" style="margin-top: 20px; background: none; border: none; color: #999; cursor: pointer; width: 100%;">DISMISS</button>
         </div>
     </div>
 
@@ -3245,6 +3220,7 @@ We take every career and every property journey seriously, following a well-defi
 </footer>
 </body>
 </html>
+
 
 
 
