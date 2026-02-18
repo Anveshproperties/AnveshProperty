@@ -2657,11 +2657,16 @@ We take every career and every property journey seriously, following a well-defi
 
 <section class="bank-section">
     <div class="container">
-        <div class="section-title">
-            <h2>Banks In Our Network</h2>
+        <div class="section-header">
+            <span class="sub-badge">Trusted Partners</span>
+            <h2>Our Banking Network</h2>
+            <div class="header-line"></div>
         </div>    
 
         <div class="bank-slider">
+            <div class="slider-overlay left"></div>
+            <div class="slider-overlay right"></div>
+
             <div class="bank-logos-track">
                 <div class="bank-card"><img src="ICICI.png" alt="ICICI"></div>
                 <div class="bank-card"><img src="SBI.png" alt="SBI"></div>
@@ -2676,8 +2681,8 @@ We take every career and every property journey seriously, following a well-defi
                 <div class="bank-card"><img src="Bank Of Baroda.png" alt="BOB"></div>
                 <div class="bank-card"><img src="kotak.png" alt="Kotak"></div>
                 <div class="bank-card"><img src="IDBI Bank.png" alt="IDBI"></div>
-                <div class="bank-card"><img src="Idfc First Bank.png" alt="IDFC"></div>
-                <div class="bank-card"><img src="Bajaj.png" alt="Bajaj"></div>
+                <div class="bank-card"><img src="IDFC First Bank.png" alt="IDFC"></div>
+                <div class="bank-card"><img src="BAJAJ.png" alt="Bajaj"></div>
             </div>
         </div>
     </div>    
@@ -2685,107 +2690,131 @@ We take every career and every property journey seriously, following a well-defi
 
 <style>
     :root {
-        --bg-light: #f8fafc;
-        --white: #ffffff;
-        --primary: #2563eb;
-        --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        --bg-gradient: linear-gradient(135deg, #fdfcfb 0%, #e2d1c3 100%);
+        --card-bg: rgba(255, 255, 255, 0.9);
+        --primary-blue: #2563eb;
+        --text-dark: #1e293b;
     }
 
     .bank-section {
-        padding: 40px 0;
-        background-color: var(--bg-light);
-        font-family: 'Inter', sans-serif;
+        padding: 60px 0;
+        background: #f8fafc; /* Clean light background */
+        font-family: 'Segoe UI', Roboto, sans-serif;
         overflow: hidden;
     }
 
     .container {
-        max-width: 1400px; /* Wider container */
+        max-width: 1200px;
         margin: 0 auto;
         padding: 0 20px;
     }
 
-    .section-title h2 {
-        font-size: 1.8rem;
+    /* --- Header Design --- */
+    .section-header {
         text-align: center;
-        color: #0f172a;
-        margin-bottom: 30px;
+        margin-bottom: 50px;
     }
 
-    /* --- TICKER ANIMATION SETTINGS --- */
-    .bank-slider {
-        display: flex;
-        width: 100%;
-        overflow: hidden;
-        position: relative;
+    .sub-badge {
+        background: #dbeafe;
+        color: var(--primary-blue);
+        padding: 5px 15px;
+        border-radius: 20px;
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 1px;
     }
+
+    .section-header h2 {
+        font-size: 2.2rem;
+        color: var(--text-dark);
+        margin-top: 15px;
+        font-weight: 800;
+    }
+
+    .header-line {
+        width: 60px;
+        height: 4px;
+        background: var(--primary-blue);
+        margin: 15px auto;
+        border-radius: 2px;
+    }
+
+    /* --- Slider Logic --- */
+    .bank-slider {
+        position: relative;
+        display: flex;
+        align-items: center;
+        padding: 20px 0;
+    }
+
+    /* Edge Fading Effect */
+    .slider-overlay {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100px;
+        z-index: 2;
+        pointer-events: none;
+    }
+    .slider-overlay.left { left: 0; background: linear-gradient(to right, #f8fafc, transparent); }
+    .slider-overlay.right { right: 0; background: linear-gradient(to left, #f8fafc, transparent); }
 
     .bank-logos-track {
         display: flex;
-        /* Gap between cards */
-        gap: 30px; 
-        /* Speed: 20s for one full rotation */
-        animation: scroll 20s linear infinite; 
+        gap: 40px;
+        animation: scroll 30s linear infinite;
         width: max-content;
     }
 
+    /* --- Card Design --- */
     .bank-card {
-        /* Adjusted width for sleeker look */
-        min-width: 160px; 
-        height: 80px;
-        background: var(--white);
-        border-radius: 12px;
+        min-width: 180px;
+        height: 100px;
+        background: var(--card-bg);
+        border-radius: 16px;
         display: flex;
         align-items: center;
         justify-content: center;
-        padding: 10px;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        border: 1px solid #e2e8f0;
-        transition: 0.3s ease;
+        padding: 15px;
+        /* Updated Shadow for "Floating" Look */
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        border: 1px solid rgba(255, 255, 255, 0.8);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
     .bank-card img {
-        max-width: 110px;
-        max-height: 50px;
+        max-width: 130px;
+        max-height: 60px;
         object-fit: contain;
-        filter: grayscale(100%);
-        opacity: 0.7;
-        transition: 0.3s ease;
-    }
-
-    /* Hover effect */
-    .bank-card:hover {
-        transform: translateY(-3px);
-        border-color: var(--primary);
-    }
-
-    .bank-card:hover img {
-        filter: grayscale(0%);
+        /* Removed grayscale and opacity filters */
+        filter: none; 
         opacity: 1;
     }
 
-    /* THE MOVEABLE LOGIC */
-    @keyframes scroll {
-        0% { transform: translateX(0); }
-        /* Moves the track left by exactly half the width of the total content */
-        100% { transform: translateX(-50%); } 
+    /* Modern Interaction */
+    .bank-card:hover {
+        transform: translateY(-10px) scale(1.05);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        background: #ffffff;
     }
 
-    /* Pause movement when you put your mouse over the banks */
+    @keyframes scroll {
+        0% { transform: translateX(0); }
+        100% { transform: translateX(calc(-50% - 20px)); } 
+    }
+
     .bank-slider:hover .bank-logos-track {
         animation-play-state: paused;
     }
 
-    /* Mobile view adjustments */
     @media (max-width: 768px) {
-        .bank-card { min-width: 130px; height: 60px; }
-        .bank-card img { max-width: 80px; }
+        .bank-card { min-width: 140px; height: 80px; }
+        .bank-card img { max-width: 90px; }
+        .section-header h2 { font-size: 1.6rem; }
     }
 </style>
-
-</body>
-
-</div>
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -3220,6 +3249,7 @@ We take every career and every property journey seriously, following a well-defi
 </footer>
 </body>
 </html>
+
 
 
 
