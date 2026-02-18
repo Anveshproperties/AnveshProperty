@@ -208,6 +208,15 @@
                             <a href="#P_loan">Personal Loans</a>
                         </div>
                     </div>
+						<div class="dropdown">
+			<a href="#projects" class="nav-item">
+			Our Projects <i class="fas fa-chevron-down" style="font-size: 10px;"></i>
+			</a>
+    
+			<div class="dropdown-content">
+			<a href="projects.html">View All Projects</a>
+		</div>
+	</div>
                     <a href="#contact" class="nav-item">Contact</a>
                 </div>
                 <button class="enquiry-cta-btn" onclick="toggleModal(true)">Enquiry Now</button>
@@ -1958,6 +1967,60 @@ We take every career and every property journey seriously, following a well-defi
     .breakdown-label span { color: var(--text-muted); font-size: 14px; }
     .breakdown-label strong { color: var(--primary-blue); font-size: 14px; }
 
+<style>
+    /* Smooth Scroll makes the transition look professional */
+    html {
+        scroll-behavior: smooth;
+    }
+
+    /* Important: Offset for Fixed Headers */
+    /* If you have a sticky navbar, this prevents it from covering the title */
+    #premium-projects-anchor {
+        scroll-margin-top: 100px; 
+    }
+
+    /* Basic styling for the dropdown from your previous code */
+    .dropdown {
+        position: relative;
+        display: inline-block;
+        font-family: sans-serif;
+    }
+
+    .nav-item {
+        text-decoration: none;
+        color: #333;
+        font-weight: bold;
+        padding: 10px;
+        display: block;
+    }
+
+    .dropdown-content {
+        display: none;
+        position: absolute;
+        background: white;
+        min-width: 180px;
+        box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+        z-index: 10;
+        border-radius: 4px;
+    }
+
+    .dropdown:hover .dropdown-content {
+        display: block;
+    }
+
+    .dropdown-content a {
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+        color: #555;
+    }
+
+    .dropdown-content a:hover {
+        background: #f8fafc;
+        color: #2563eb;
+    }
+</style>
+	
     .enquiry-btn {
         width: 100%;
         margin-top: 20px;
@@ -3249,6 +3312,7 @@ We take every career and every property journey seriously, following a well-defi
 </footer>
 </body>
 </html>
+
 
 
 
